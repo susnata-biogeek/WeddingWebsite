@@ -30,8 +30,15 @@ const Events = ({ visible }) => {
   return (
     <section id="events" className="section py-20 bg-white" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-serif text-center mb-16">Schedule of Events</h2>
-        
+        <h2 className="text-4xl font-serif text-center mb-8">Event Details</h2>
+
+        <div className="max-w-2xl mx-auto text-center mb-12">
+          <p className="mb-2"><strong>When:</strong> November 26, 2025</p>
+          <p className="mb-2"><strong>Where:</strong> St. Patrick's Cathedral, New York, NY</p>
+          <p><strong>Number of Days:</strong> One day of festivities</p>
+        </div>
+
+        <h3 className="text-3xl font-serif text-center mb-8">Event Schedule</h3>
         <div className="grid md:grid-cols-2 gap-12">
           {events.map((event, index) => (
             <div key={index} className="bg-gray-50 p-8 rounded-lg shadow-md animate-hidden animate-item">

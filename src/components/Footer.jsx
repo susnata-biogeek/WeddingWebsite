@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h3 className="text-2xl font-serif mb-2">Susnata & Saiteja</h3>
-            <p className="text-gray-400">August 1, 2023 • New York, NY</p>
+            <p className="text-gray-400">November 26, 2025 • New York, NY</p>
           </div>
           
           <div className="text-center md:text-right">
@@ -20,7 +20,7 @@ const Footer = () => {
         
         <div className="mt-8 pt-8 border-t border-gray-700 text-center">
           <p className="text-sm text-gray-400">
-            Made with ❤️ for our wedding day
+            Made with ❤️ for our wedding celebration
           </p>
         </div>
       </div>
