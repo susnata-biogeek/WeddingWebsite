@@ -3,11 +3,11 @@ import { useState, useEffect, useRef } from 'react';
 const RSVP = ({ visible }) => {
   const sectionRef = useRef(null);
   const [formData, setFormData] = useState({
-    name: '',
+    names: '',
     email: '',
-    attending: 'yes',
-    guests: 0,
-    message: ''
+    phone: '',
+    guests: 1,
+    requests: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -39,11 +39,11 @@ const RSVP = ({ visible }) => {
     
     // Map your form fields to Google Form field IDs
     // Replace 'entry.123456789' with your actual Google Form field IDs
-    formSubmitData.append('entry.123456789', formData.name);
+    formSubmitData.append('entry.123456789', formData.names);
     formSubmitData.append('entry.234567890', formData.email);
-    formSubmitData.append('entry.345678901', formData.attending);
+    formSubmitData.append('entry.345678901', formData.phone);
     formSubmitData.append('entry.456789012', formData.guests);
-    formSubmitData.append('entry.567890123', formData.message);
+    formSubmitData.append('entry.567890123', formData.requests);
     
     try {
       // Due to CORS restrictions, direct submission might not work
@@ -59,11 +59,11 @@ const RSVP = ({ visible }) => {
       // So we'll just assume it worked
       setSubmitSuccess(true);
       setFormData({
-        name: '',
+        names: '',
         email: '',
-        attending: 'yes',
-        guests: 0,
-        message: ''
+        phone: '',
+        guests: 1,
+        requests: ''
       });
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -95,24 +95,24 @@ const RSVP = ({ visible }) => {
             </div>
           ) : (
             <>
-              <p className="text-center mb-8">Please let us know if you can make it to our special day by October 26, 2025.</p>
+              <p className="text-center mb-8">We hope you can join us! Please RSVP by October 26, 2025.</p>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block mb-2 text-sm font-medium">Your Name</label>
+                  <label htmlFor="names" className="block mb-2 text-sm font-medium">Names</label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id="names"
+                    name="names"
+                    value={formData.names}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     required
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="email" className="block mb-2 text-sm font-medium">Email Address</label>
+                  <label htmlFor="email" className="block mb-2 text-sm font-medium">Email</label>
                   <input
                     type="email"
                     id="email"
@@ -123,74 +123,56 @@ const RSVP = ({ visible }) => {
                     required
                   />
                 </div>
-                
+
                 <div>
-                  <label className="block mb-2 text-sm font-medium">Will you be attending?</label>
-                  <div className="flex space-x-4">
-                    <label className="inline-flex items-center">
-                      <input
-                        type="radio"
-                        name="attending"
-                        value="yes"
-                        checked={formData.attending === 'yes'}
-                        onChange={handleChange}
-                        className="form-radio text-primary"
-                      />
-                      <span className="ml-2">Yes, I'll be there</span>
-                    </label>
-                    <label className="inline-flex items-center">
-                      <input
-                        type="radio"
-                        name="attending"
-                        value="no"
-                        checked={formData.attending === 'no'}
-                        onChange={handleChange}
-                        className="form-radio text-primary"
-                      />
-                      <span className="ml-2">Sorry, I can't make it</span>
-                    </label>
-                  </div>
+                  <label htmlFor="phone" className="block mb-2 text-sm font-medium">Phone</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
                 </div>
-                
-                {formData.attending === 'yes' && (
-                  <div>
-                    <label htmlFor="guests" className="block mb-2 text-sm font-medium">Number of Additional Guests</label>
-                    <select
-                      id="guests"
-                      name="guests"
-                      value={formData.guests}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                    >
-                      <option value="0">Just me</option>
-                      <option value="1">+1</option>
-                      <option value="2">+2</option>
-                      <option value="3">+3</option>
-                      <option value="4">+4</option>
-                    </select>
-                  </div>
-                )}
-                
+
                 <div>
-                  <label htmlFor="message" className="block mb-2 text-sm font-medium">Message (Optional)</label>
+                  <label htmlFor="guests" className="block mb-2 text-sm font-medium">Number of Guests</label>
+                  <select
+                    id="guests"
+                    name="guests"
+                    value={formData.guests}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="requests" className="block mb-2 text-sm font-medium">Special Requests</label>
                   <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
+                    id="requests"
+                    name="requests"
+                    value={formData.requests}
                     onChange={handleChange}
                     rows="4"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   ></textarea>
                 </div>
-                
+
                 {submitError && (
                   <div className="p-3 bg-red-100 text-red-700 rounded-md">
                     {submitError}
                   </div>
                 )}
-                
-                <button 
-                  type="submit" 
+
+                <button
+                  type="submit"
                   className="btn btn-primary w-full flex justify-center items-center"
                   disabled={isSubmitting}
                 >

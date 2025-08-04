@@ -2,13 +2,11 @@ import { useState, useEffect } from 'react';
 import Travel from './components/Travel';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import HowWeMet from './components/HowWeMet';
 import Countdown from './components/Countdown';
 import RSVP from './components/RSVP';
 import Events from './components/Events';
 import Features from './components/Features';
 import Intro from './components/Intro';
-import Registry from './components/Registry';
 
 function App() {
   // State for animations
@@ -50,11 +48,9 @@ function App() {
       <Header />
       <main>
         <Intro visible={elementsVisible['intro']} />
-        <HowWeMet visible={elementsVisible['how-we-met']} />
         <Countdown weddingDate={weddingDate} visible={elementsVisible['countdown']} />
         <Events visible={elementsVisible['events']} />
         <Travel visible={elementsVisible['travel']} />
-        <Registry visible={elementsVisible['registry']} />
         <Features visible={elementsVisible['features']} />
         <RSVP visible={elementsVisible['rsvp']} />
       </main>
