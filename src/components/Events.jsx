@@ -12,13 +12,13 @@ const Events = ({ visible }) => {
 
   const events = [
     {
-      title: "Pre Wedding Party",
+      title: "[TBD] Pre Wedding Party",
       date: "24 November 2025",
       time: "7:00 PM - 01:00 AM",
-      location: "Embassy Night Club (Unconfirmed venue)",
-      locationUrl: "",
-      address: "",
-      description: "To Celebrate with drinks, dancing, and bollywood night."
+      location: "Greenland Resort (Unconfirmed venue)",
+      locationUrl: "https://maps.app.goo.gl/X5PPXsCL44rXXB8P8",
+      address: "588, 5383, Khandai Rd, Patia, Bhubaneswar, Odisha 751021, India",
+      description: "To warm up for celebration to come, with drinks, music at Farm House."
     },
     {
       title: "Mil Jhul (Meet&Greet)",
@@ -27,7 +27,7 @@ const Events = ({ visible }) => {
       location: "Chandaka Nature Resort",
       locationUrl: "https://maps.google.com/?q=Chandaka+Nature+Resort+Bhubaneswar+India",
       address: "Kantabada_Deras Dam, Barapita, Bhubaneswar, Odisha 751024, India",
-      description: "Join us as we exchange vows and begin our journey together."
+      description: "Welcoming guests with stalls, games and engaging activities"
     },
     {
       title: "Sangeet",
@@ -121,20 +121,23 @@ const Events = ({ visible }) => {
 
         <h3 className="text-3xl font-serif text-center mb-8">Event Schedule</h3>
 
-         <div className="bg-primary bg-opacity-10 py-12 px-4 rounded-lg max-w-4xl mx-auto">
+        <div className="bg-primary bg-opacity-10 py-12 px-4 rounded-lg max-w-4xl mx-auto">
           <div className="space-y-6">
             {events.map((event, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <h3 className="text-2xl font-serif mb-2 md:mb-0 text-primary">{event.title}</h3>
-                  <span className="text-lg font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full text-center">
+                  <div>
+                    <h3 className="text-2xl font-serif mb-1 text-primary">{event.title}</h3>
+                    <p className="text-sm text-gray-500 font-medium">{event.date}</p>
+                  </div>
+                  <span className="text-lg font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full text-center mt-2 md:mt-0">
                     {event.time}
                   </span>
                 </div>
 
                 <div className="mb-4">
                   {event.locationUrl ? (
-                    <button 
+                    <button
                       onClick={() => window.open(event.locationUrl, '_blank')}
                       className="font-medium text-bride_green hover:text-bride_green/80 transition-colors duration-300 mb-1 flex items-center group"
                     >
@@ -154,13 +157,13 @@ const Events = ({ visible }) => {
                 <p className="text-gray-700 mb-4">{event.description}</p>
 
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <button 
+                  <button
                     onClick={() => {
                       // Generate calendar event based on event data
                       const eventDate = index === 0 ? '20251124' : index === 1 ? '20251125' : index === 2 ? '20251125' : '20251126';
                       const startTime = event.time.split(' - ')[0];
                       const endTime = event.time.split(' - ')[1];
-                      
+
                       // Convert time to 24hr format for calendar
                       const convertTo24Hour = (time) => {
                         const [timePart, period] = time.split(' ');
@@ -170,14 +173,14 @@ const Events = ({ visible }) => {
                         if (period === 'AM' && hours === 12) hours = 0;
                         return `${hours.toString().padStart(2, '0')}${minutes}00`;
                       };
-                      
+
                       const startDateTime = `${eventDate}T${convertTo24Hour(startTime)}Z`;
                       const endDateTime = `${eventDate}T${convertTo24Hour(endTime)}Z`;
-                      
+
                       const title = encodeURIComponent(`${event.title} - Susnata & Saiteja Wedding`);
                       const details = encodeURIComponent(event.description);
                       const location = encodeURIComponent(`${event.location}${event.address ? ', ' + event.address : ''}`);
-                      
+
                       const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDateTime}/${endDateTime}&details=${details}&location=${location}`;
                       window.open(googleCalendarUrl, '_blank');
                     }}
@@ -188,9 +191,9 @@ const Events = ({ visible }) => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                     </svg>
                   </button>
-                  
+
                   {event.locationUrl && (
-                    <button 
+                    <button
                       onClick={() => window.open(event.locationUrl, '_blank')}
                       className="text-bride_green flex items-center hover:text-bride_green/80 transition-colors duration-300 bg-bride_green/10 hover:bg-bride_green/20 px-4 py-2 rounded-md"
                     >
