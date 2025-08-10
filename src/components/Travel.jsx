@@ -40,38 +40,33 @@ const Travel = ({ visible }) => {
   return (
     <section id="travel" className="section py-20 bg-secondary" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-serif text-center mb-16">Travel & Accommodations</h2>
-        
+        <h2 className="text-4xl font-serif text-center mb-16">How to Reach &amp; Where to Stay</h2>
+
         <div className="max-w-4xl mx-auto">
           <div className="mb-12">
-            <h3 className="text-2xl font-serif mb-4">Getting There</h3>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h4 className="text-xl font-medium mb-3">Airports</h4>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-primary mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span><strong>JFK International Airport (JFK)</strong> - 18 miles from venue (approx. 45-60 min drive)</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-primary mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span><strong>LaGuardia Airport (LGA)</strong> - 9 miles from venue (approx. 30 min drive)</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-primary mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span><strong>Newark Liberty International Airport (EWR)</strong> - 25 miles from venue (approx. 50-60 min drive)</span>
-                </li>
-              </ul>
+            <h3 className="text-2xl font-serif mb-4">How to Reach</h3>
+            <div className="bg-white p-6 rounded-lg shadow-md space-y-6">
+              <div>
+                <h4 className="text-xl font-medium mb-2">By Air</h4>
+                <p>JFK International Airport (18 miles), LaGuardia Airport (9 miles), Newark Liberty International Airport (25 miles)</p>
+              </div>
+              <div>
+                <h4 className="text-xl font-medium mb-2">By Train</h4>
+                <p>Nearest Station: Grand Central Terminal – approximately 15 minutes by taxi.</p>
+              </div>
+              <div>
+                <h4 className="text-xl font-medium mb-2">By Road</h4>
+                <p>Driving directions available via GPS to St. Patrick's Cathedral, New York.</p>
+              </div>
+              <div>
+                <h4 className="text-xl font-medium mb-2">Resort Transfers</h4>
+                <p>Shuttle service from JFK available with prior reservation.</p>
+              </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-2xl font-serif mb-4">Accommodations</h3>
+            <h3 className="text-2xl font-serif mb-4">Where to Stay</h3>
             {accommodations.map((acc, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-md mb-6">
                 <h4 className="text-xl font-medium mb-3">{acc.name}</h4>

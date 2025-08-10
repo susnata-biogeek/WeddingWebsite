@@ -10,6 +10,9 @@ export default {
         primary: '#9c8570',  // A warm brown color
         'primary-dark': '#7a6753',
         secondary: '#f9f7f5', // Light cream color
+        border_green: "#003D20",
+        bride_green: "#2E6417",
+        groom_blue: "#00167A"
       },
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
